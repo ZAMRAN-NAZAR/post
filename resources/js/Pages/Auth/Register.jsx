@@ -27,7 +27,7 @@ const Register = () => {
                     type="text"
                     placeholder="Enter your username"
                     className="outline-none"
-                    value={data.username}
+                    value={data.name}
                     onChange={(e) => setData("name", e.target.value)}
                 />
                 {errors.username && (
