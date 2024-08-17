@@ -17,4 +17,15 @@ class PostController extends Controller
             'posts' => $posts
         ]);
     }
+
+    public function show(Post $post) {
+
+        $postAuthor = $post->user;
+
+        return inertia('Show', [
+            'post' => $post,
+            'postAuthor' => $postAuthor,
+            'user' => Auth::user()
+        ]);
+    }
 }

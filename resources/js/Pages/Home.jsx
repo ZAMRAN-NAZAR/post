@@ -3,7 +3,6 @@ import Layout from "../Layout/Layout";
 import { Link } from "@inertiajs/react";
 
 const Home = ({ user, posts }) => {
-    console.log(posts);
     return (
         <Layout user={user}>
             <div>
