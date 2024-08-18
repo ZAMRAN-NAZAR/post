@@ -14,9 +14,9 @@ const Layout = ({ children, user }) => {
         <>
             <header>
                 <nav>
-                    <Link href="/" className="nav-link">
+                    <a href="/">
                         <img src={logo} />
-                    </Link>
+                    </a>
                     {user ? (
                         <div className="flex items-center gap-5">
                             <Link href="/profile" className="nav-link">

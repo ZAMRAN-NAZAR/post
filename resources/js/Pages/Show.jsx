@@ -22,22 +22,27 @@ const Show = ({ post, postAuthor, user }) => {
                     on {new Date(post.created_at).toDateString()}
                 </span>
                 <p>{post.body}</p>
-                <div className="flex justify-end gap-2 mt-1">
-                    <Link
-                        href={`/posts/${post.id}/edit`}
-                        className="bg-blue-500 px-4 py-1 rounded-lg text-sm text-white hover:bg-blue-600 transition-colors duration-150"
-                    >
-                        Edit
-                    </Link>
-                    <form onSubmit={submit}>
-                        <button
-                            className="bg-red-500 px-4 py-1 rounded-lg text-sm text-white hover:bg-red-600 transition-colors duration-150"
-                            disabled={processing}
+
+                {user.name === post.user.name ? (
+                    <div className="flex justify-end gap-2 mt-1">
+                        <Link
+                            href={`/posts/${post.id}/edit`}
+                            className="bg-blue-500 px-4 py-1 rounded-lg text-sm text-white hover:bg-blue-600 transition-colors duration-150"
                         >
-                            Delete
-                        </button>
-                    </form>
-                </div>
+                            Edit
+                        </Link>
+                        <form onSubmit={submit}>
+                            <button
+                                className="bg-red-500 px-4 py-1 rounded-lg text-sm text-white hover:bg-red-600 transition-colors duration-150"
+                                disabled={processing}
+                            >
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                ) : (
+                    ""
+                )}
             </div>
         </Layout>
     );
