@@ -17,4 +17,5 @@ Route::controller(PostController::class)->group(function() {
     Route::get('/', 'index');
     Route::get('/posts/{post}', 'show');
     Route::get('/posts/{post}/edit', 'edit');
+    Route::put('/posts/{post}', 'update')->name('posts.update');
 });

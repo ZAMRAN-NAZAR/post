@@ -38,4 +38,15 @@ class PostController extends Controller
             'user' => $user
         ]);
     }
+
+    public function update(Request $request, Post $post) {
+        
+        $validatedFields = $request->validate([
+            'body' => ['required', 'max:250']
+        ]);
+
+        $post->update($validatedFields);
+
+        return redirect('/');
+    }
 }
