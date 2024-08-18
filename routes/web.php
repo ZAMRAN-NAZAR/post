@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisterUserController::class, 'create']);
@@ -29,4 +30,8 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
     Route::delete('/posts/{post}', 'destroy')
         ->name('posts.destroy')
         ->can('handle-post', 'post');
+});
+
+Route::controller(UserProfileController::class)->middleware('auth')->group(function() {
+    Route::get('/profile', 'index');
 });
