@@ -28,4 +28,14 @@ class PostController extends Controller
             'user' => Auth::user()
         ]);
     }
+
+    public function edit(Post $post) {
+
+        $user = Auth::user();
+
+        return inertia('Edit', [
+            'post' => $post,
+            'user' => $user
+        ]);
+    }
 }

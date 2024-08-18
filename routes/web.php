@@ -16,4 +16,5 @@ Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('aut
 Route::controller(PostController::class)->group(function() {
     Route::get('/', 'index');
     Route::get('/posts/{post}', 'show');
+    Route::get('/posts/{post}/edit', 'edit');
 });
