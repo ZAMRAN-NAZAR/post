@@ -18,6 +18,29 @@ class PostController extends Controller
         ]);
     }
 
+    public function create() {
+
+        return inertia('Create', [
+            'user' => Auth::user()
+        ]);
+    }
+
+    public function store(Request $request) {
+
+        $validatedFields = $request->validate([
+            'body' => ['required', 'max:250']
+        ]);
+
+        $user = Auth::user();
+
+        Post::create([
+            'body' => $validatedFields['body'],
+            'user_id' => $user->id
+        ]);
+
+        return redirect('/');
+    }
+
     public function show(Post $post) {
 
         $postAuthor = $post->user;
