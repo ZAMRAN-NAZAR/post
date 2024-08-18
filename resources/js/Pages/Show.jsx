@@ -1,9 +1,18 @@
 import React from "react";
 import Layout from "../Layout/Layout";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
+import { useRoute } from "../../../vendor/tightenco/ziggy";
 
 const Show = ({ post, postAuthor, user }) => {
-    console.log(post);
+    const { delete: destroy, processing } = useForm();
+    const route = useRoute();
+
+    const submit = (e) => {
+        e.preventDefault();
+
+        destroy(route("posts.destroy", post));
+    };
+
     return (
         <Layout user={user}>
             <div className="p-4 border-b mt-5">
@@ -20,8 +29,11 @@ const Show = ({ post, postAuthor, user }) => {
                     >
                         Edit
                     </Link>
-                    <form>
-                        <button className="bg-red-500 px-4 py-1 rounded-lg text-sm text-white hover:bg-red-600 transition-colors duration-150">
+                    <form onSubmit={submit}>
+                        <button
+                            className="bg-red-500 px-4 py-1 rounded-lg text-sm text-white hover:bg-red-600 transition-colors duration-150"
+                            disabled={processing}
+                        >
                             Delete
                         </button>
                     </form>
