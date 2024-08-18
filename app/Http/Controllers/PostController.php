@@ -38,7 +38,7 @@ class PostController extends Controller
             'user_id' => $user->id
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('created', 'The post has been created successfully');
     }
 
     public function show(Post $post) {
@@ -70,13 +70,13 @@ class PostController extends Controller
 
         $post->update($validatedFields);
 
-        return redirect('/');
+        return redirect('/')->with('updated', 'The post has been updated successfully');
     }
 
     public function destroy(Post $post) {
 
         $post->delete();
 
-        return redirect('/');
+        return redirect('/')->with('deleted', 'The post has been deleted successfully');
     }
 }

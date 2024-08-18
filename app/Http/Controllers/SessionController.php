@@ -27,12 +27,12 @@ class SessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/');
+        return redirect('/')->with('loggedIn', 'You have successfully logged in');
     }
 
     public function destroy() {
         Auth::logout();
 
-        return redirect('/');
+        return redirect('/login')->with('loggedOut', 'You have successfully logged out');
     }
 }
