@@ -12,4 +12,8 @@ class UserProfileController extends Controller
             'user' => Auth::user()
         ]);
     }
+
+    public function store(Request $request) {
+        dd($request);
+    }
 }

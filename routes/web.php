@@ -34,4 +34,5 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
 
 Route::controller(UserProfileController::class)->middleware('auth')->group(function() {
     Route::get('/profile', 'index');
+    Route::post('/profile', 'store');
 });
