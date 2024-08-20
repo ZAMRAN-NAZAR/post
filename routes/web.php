@@ -34,5 +34,7 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
 
 Route::controller(UserProfileController::class)->middleware('auth')->group(function() {
     Route::get('/profile', 'index');
-    Route::post('/profile', 'store');
+    Route::patch('/profile', 'store');
+    Route::get('/profile/password', 'edit');
+    Route::patch('/profile/password', 'update');
 });

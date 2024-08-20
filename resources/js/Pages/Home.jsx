@@ -28,6 +28,16 @@ const Home = ({ user, posts }) => {
                     {flashMessage.loggedIn}
                 </div>
             )}
+            {flashMessage.name && (
+                <div className="absolute top-24 right-6 bg-green-600 text-white text-sm p-3 rounded-md shadow-lg">
+                    {flashMessage.name}
+                </div>
+            )}
+            {flashMessage.password && (
+                <div className="absolute top-24 right-6 bg-green-600 text-white text-sm p-3 rounded-md shadow-lg">
+                    {flashMessage.password}
+                </div>
+            )}
             {flashMessage.deleted && (
                 <div className="absolute top-24 right-6 bg-red-600 text-white text-sm p-3 rounded-md shadow-lg">
                     {flashMessage.deleted}

@@ -42,6 +42,8 @@ class HandleInertiaRequests extends Middleware
                 'updated' => fn () => $request->session()->get('updated'),
                 'loggedIn' => fn () => $request->session()->get('loggedIn'),
                 'loggedOut' => fn () => $request->session()->get('loggedOut'),
+                'name' => fn () => $request->session()->get('name'),
+                'password' => fn () => $request->session()->get('password'),
             ]
         ]);
     }
