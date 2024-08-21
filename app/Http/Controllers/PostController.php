@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Response;
 
 class PostController extends Controller
 {
-    public function index(Post $post) {
-
+    public function index(Post $post) : Response 
+    {
         $posts = $post->with('user')->latest()->paginate(5);
 
         return inertia('Home', [
@@ -18,15 +20,15 @@ class PostController extends Controller
         ]);
     }
 
-    public function create() {
-
+    public function create() : Response 
+    {
         return inertia('Create', [
             'user' => Auth::user()
         ]);
     }
 
-    public function store(Request $request) {
-
+    public function store(Request $request) : RedirectResponse 
+    {
         $validatedFields = $request->validate([
             'body' => ['required', 'max:250']
         ]);
@@ -41,8 +43,8 @@ class PostController extends Controller
         return redirect('/')->with('created', 'The post has been created successfully');
     }
 
-    public function show(Post $post) {
-
+    public function show(Post $post) : Response 
+    {
         $postAuthor = $post->user;
 
         return inertia('Show', [
@@ -52,8 +54,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function edit(Post $post) {
-
+    public function edit(Post $post) : Response 
+    {
         $user = Auth::user();
 
         return inertia('Edit', [
@@ -62,8 +64,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request, Post $post) {
-        
+    public function update(Request $request, Post $post) : RedirectResponse 
+    {    
         $validatedFields = $request->validate([
             'body' => ['required', 'max:250']
         ]);
@@ -73,8 +75,8 @@ class PostController extends Controller
         return redirect('/')->with('updated', 'The post has been updated successfully');
     }
 
-    public function destroy(Post $post) {
-
+    public function destroy(Post $post) : RedirectResponse 
+    {
         $post->delete();
 
         return redirect('/')->with('deleted', 'The post has been deleted successfully');
