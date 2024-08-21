@@ -47,8 +47,13 @@ const Home = ({ user, posts }) => {
             <div>
                 {posts.data.map((post) => (
                     <div key={post.id} className="p-4 border-b">
-                        <h3 className="font-bold text-md">{post.user.name}</h3>
-                        <span className="text-sm text-slate-400">
+                        <Link
+                            href={`/authorprofile/${post.user.id}`}
+                            className="font-bold text-md"
+                        >
+                            {post.user.name}
+                        </Link>
+                        <span className="text-sm text-slate-400 block">
                             Posted at :{" "}
                             {new Date(post.created_at).toLocaleTimeString()} on{" "}
                             {new Date(post.created_at).toDateString()}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
@@ -38,3 +39,5 @@ Route::controller(UserProfileController::class)->middleware('auth')->group(funct
     Route::get('/profile/password', 'edit');
     Route::patch('/profile/password', 'update');
 });
+
+Route::get('/authorprofile/{user}', [AuthorProfileController::class, 'index']);

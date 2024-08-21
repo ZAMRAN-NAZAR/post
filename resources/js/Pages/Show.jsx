@@ -6,6 +6,7 @@ import { useRoute } from "../../../vendor/tightenco/ziggy";
 const Show = ({ post, postAuthor, user }) => {
     const { delete: destroy, processing } = useForm();
     const route = useRoute();
+    console.log(postAuthor);
 
     const submit = (e) => {
         e.preventDefault();
@@ -16,8 +17,13 @@ const Show = ({ post, postAuthor, user }) => {
     return (
         <Layout user={user}>
             <div className="p-4 border-b mt-5">
-                <h3 className="font-bold text-md">{postAuthor.name}</h3>
-                <span className="text-sm text-slate-400">
+                <Link
+                    href={`/authorprofile/${postAuthor.id}`}
+                    className="font-bold text-md"
+                >
+                    {postAuthor.name}
+                </Link>
+                <span className="text-sm text-slate-400 block">
                     Posted at : {new Date(post.created_at).toLocaleTimeString()}{" "}
                     on {new Date(post.created_at).toDateString()}
                 </span>

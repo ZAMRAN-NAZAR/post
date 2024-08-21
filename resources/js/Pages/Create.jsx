@@ -20,6 +20,7 @@ const Create = ({ user }) => {
                     rows={10}
                     value={data.body}
                     onChange={(e) => setData("body", e.target.value)}
+                    placeholder="Share what's on your mind..."
                 ></textarea>
                 <form onSubmit={submit}>
                     <button
