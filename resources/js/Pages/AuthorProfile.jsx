@@ -11,12 +11,16 @@ const AuthorProfile = ({ user, posts, authUser }) => {
         <Layout user={authUser}>
             <div className="py-6 flex justify-between">
                 <h2 className="font-bold text-2xl">{user.name}</h2>
-                <Link
-                    href="/profile"
-                    className="bg-slate-800 text-white py-1 px-4 rounded-xl hover:bg-slate-600 transition-colors duration-150"
-                >
-                    Profile Settings
-                </Link>
+                {authUser.name === user.name ? (
+                    <Link
+                        href="/profile"
+                        className="bg-slate-800 text-white py-1 px-4 rounded-xl hover:bg-slate-600 transition-colors duration-150"
+                    >
+                        Profile Settings
+                    </Link>
+                ) : (
+                    ""
+                )}
             </div>
             <p className="font-medium text-lg py-2">Posts</p>
             {posts.map((post) => (
