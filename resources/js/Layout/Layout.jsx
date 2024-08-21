@@ -19,7 +19,10 @@ const Layout = ({ children, user }) => {
                     </a>
                     {user ? (
                         <div className="flex items-center gap-5">
-                            <Link href="/profile" className="nav-link">
+                            <Link
+                                href={`/authorprofile/${user.id}`}
+                                className="nav-link"
+                            >
                                 {user?.name}
                             </Link>
 

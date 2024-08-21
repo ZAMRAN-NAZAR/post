@@ -6,7 +6,6 @@ import { useRoute } from "../../../vendor/tightenco/ziggy";
 const Show = ({ post, postAuthor, user }) => {
     const { delete: destroy, processing } = useForm();
     const route = useRoute();
-    console.log(postAuthor);
 
     const submit = (e) => {
         e.preventDefault();
