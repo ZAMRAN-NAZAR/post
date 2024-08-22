@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../Layout/Layout";
 import { Link, useForm } from "@inertiajs/react";
 import { useRoute } from "../../../vendor/tightenco/ziggy";
+import settings from "../../images/settings.svg";
 
 const AuthorProfile = ({ user, posts, authUser }) => {
     const { delete: destroy, processing } = useForm();
@@ -14,8 +15,9 @@ const AuthorProfile = ({ user, posts, authUser }) => {
                 {authUser.name === user.name ? (
                     <Link
                         href="/profile"
-                        className="bg-slate-800 text-white py-1 px-4 rounded-xl hover:bg-slate-600 transition-colors duration-150"
+                        className="flex bg-slate-800 text-white py-1 px-4 rounded-xl hover:bg-slate-600 transition-colors duration-150"
                     >
+                        <img className="w-5 text-white mr-2" src={settings} />
                         Profile Settings
                     </Link>
                 ) : (
