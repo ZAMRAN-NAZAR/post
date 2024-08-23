@@ -11,6 +11,19 @@ const csrfToken = document
 
 axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
 
+axios.interceptors.response.use(
+    (response) => {
+        if (response.config.url.includes("/login")) {
+            const newCsrfToken = response.headers["x-csrf-token"];
+            axios.defaults.headers.common["X-CSRF-TOKEN"] = newCsrfToken;
+        }
+        return response;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
 createInertiaApp({
     resolve: (name) => {
         const pages = import.meta.glob("./Pages/**/*.jsx", { eager: true });
